@@ -23,7 +23,7 @@ router.route('/assignexercise')
         if (!fitness_no) {res.status(400).json({message: 'no fitness_no'}); return;}
         if (!member_no) {res.status(400).json({message: 'no member_no'}); return;}
 
-        let clue = {
+        const clue = {
             where: {
                 fitness_no: fitness_no
             }
@@ -31,13 +31,13 @@ router.route('/assignexercise')
 
         if (type === "all") {}
         else if (type === "member") {
-            clue = {
+            clue.where = {
                 fitness_no: fitness_no,
                 member_no: member_no,
             }
         }
         else if (type === "customer"){ // 날짜포함
-            clue = {
+            clue.where = {
                 fitness_no: fitness_no,
                 member_no: member_no,
                 createAt : {
